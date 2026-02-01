@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Para Natasha y César ❤️</title>
+    <title>Para mis latinos favoritos ❤️</title>
     <style>
         /* --- RESET & BASICS --- */
         * {
@@ -17,22 +17,23 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #fdfbf7; /* Crema suave */
             color: #4a4a4a;
-            overflow-x: hidden;
             height: 100vh;
+            width: 100vw;
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden; /* Evita scroll en el body principal */
             position: relative;
         }
 
         /* --- PANTALLAS --- */
         .screen {
-            width: 100%;
-            max-width: 400px;
-            padding: 2rem;
+            width: 90%; /* Más ancho para móviles */
+            max-width: 420px;
             text-align: center;
             position: absolute;
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            z-index: 10;
         }
 
         .hidden {
@@ -44,50 +45,56 @@
 
         /* --- TIPOGRAFÍA --- */
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: #2d3436;
             margin-bottom: 2rem;
             font-weight: 700;
-            line-height: 1.2;
         }
 
         h2 {
-            font-size: 1.5rem;
-            color: #6c5ce7; /* Morado suave */
+            font-size: 1.4rem;
+            color: #6c5ce7;
             margin-bottom: 1rem;
+            line-height: 1.3;
         }
 
         p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 1.2rem;
-            color: #636e72;
+            font-size: 0.95rem; /* Ligeramente más pequeño para que quepa todo */
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            color: #57606f;
         }
 
         .highlight {
-            color: #e84393; /* Rosa fuerte */
+            color: #e84393;
             font-weight: 600;
+        }
+
+        .signature {
+            font-weight: 600;
+            color: #2d3436;
+            margin-top: 1rem;
         }
 
         /* --- BOTONES --- */
         .btn-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             margin-top: 20px;
             position: relative;
-            min-height: 60px; /* Espacio para que se mueva */
+            min-height: 60px;
         }
 
         button {
             border: none;
-            padding: 15px 30px;
-            font-size: 1.2rem;
+            padding: 14px 28px;
+            font-size: 1.1rem;
             border-radius: 50px;
             cursor: pointer;
             font-weight: 600;
-            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.1s;
         }
 
         button:active {
@@ -95,57 +102,62 @@
         }
 
         #btn-yes {
-            background-color: #55efc4; /* Verde menta */
-            color: #00b894;
+            background-color: #55efc4;
+            color: #008c70;
         }
 
         #btn-no {
-            background-color: #ff7675; /* Rojo pastel */
+            background-color: #ff7675;
             color: white;
-            position: relative; /* Necesario para moverlo */
+            position: relative;
             transition: top 0.3s ease, left 0.3s ease;
         }
 
-        /* --- CARTA DE DISCULPA --- */
+        /* --- CARTA DE DISCULPA (Scrollable) --- */
         .letter-content {
             background: white;
-            padding: 2rem;
+            padding: 1.5rem; /* Padding optimizado */
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             text-align: left;
-            border: 2px solid #f1f2f6;
+            border: 1px solid #dfe6e9;
+            
+            /* TRUCO PARA IPHONE PEQUEÑOS: SCROLL INTERNO */
+            max-height: 85vh; 
+            overflow-y: auto; 
+            -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
         }
 
         .small-note {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #b2bec3;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
             text-align: center;
             font-style: italic;
+            border-top: 1px dashed #dfe6e9;
+            padding-top: 10px;
         }
 
-        /* --- ANIMACIONES DE FONDO (CONFETI) --- */
+        /* --- CONFETI --- */
         .confetti {
             position: fixed;
-            top: -10px;
-            z-index: 999;
+            top: -20px;
+            z-index: 100;
             font-size: 1.5rem;
             animation: fall linear forwards;
+            pointer-events: none;
         }
 
         @keyframes fall {
-            to {
-                transform: translateY(105vh) rotate(720deg);
-            }
+            to { transform: translateY(110vh) rotate(720deg); }
         }
-
     </style>
 </head>
 <body>
 
     <div id="screen-1" class="screen">
         <h1>¿Me perdonan? 🥺</h1>
-        <p>Tengo algo importante que decirles...</p>
+        <p>Tengo algo importante que decirles, por favor escúchenme...</p>
         
         <div class="btn-container">
             <button id="btn-yes">Sí</button>
@@ -155,105 +167,71 @@
 
     <div id="screen-2" class="screen hidden">
         <div class="letter-content">
-            <h2>¡Hola Natasha, Hola César! ✨</h2>
+            <h2>¡Natasha, César! <br>Mis panas y kapes ❤️</h2>
             
-            <p>Sé que quizás debí contarles esto antes, pero a veces soy un poco desastre comunicando las cosas en el momento.</p>
+            <p>El sábado pasó algo que cambió mi rutina: <span class="highlight">me empaté con una chica</span>.</p>
             
-            <p>El sábado pasó algo bonito: <span class="highlight">me empaté con una chica</span>.</p>
+            <p>Lo siento si se enteraron de golpe. <strong>No quería ocultarlo</strong>, de verdad. Solo quería encontrar el momento perfecto para hablarlo bien con ustedes, relajados, y me duele en el alma que no haya sido así.</p>
+
+            <p>Sé que puede sonar cursi, pero lo tengo claro: <strong>sois lo mejor que me ha pasado este año</strong>. 💙</p>
+
+            <p>Siempre estaré deseando compartir tiempo con ustedes, reírnos y pasarla bien, aunque yo sea el <em>españolito</em> y ustedes los <em>latinos guapos y preciosos</em>.</p>
             
-            <p>Quería escribirles esto para decirles que, aunque esto sea nuevo, <strong>ustedes siguen siendo súper importantes para mí</strong>.</p>
-            
-            <p>Nunca fue mi intención ocultarlo ni crear distancia. Los quiero muchísimo a los dos y lo que más quiero es seguir compartiendo tiempo juntos: charlar, reírnos de tonterías y vivir buenos momentos, como siempre.</p>
-            
-            <p>Perdón si los hice sentir mal, de verdad. 💙</p>
+            <p class="signature">Los quiero burda. <br>¡Rohayhu! (Los amo) ✨</p>
             
             <div class="small-note">
-                Gracias por leer hasta aquí.<br>
-                <span style="font-size: 1.5rem; display:block; margin-top:5px;">❤️</span>
+                Gracias por leerme y por estar ahí.
             </div>
         </div>
     </div>
 
     <script>
-        // --- SELECCIÓN DE ELEMENTOS ---
         const btnYes = document.getElementById('btn-yes');
         const btnNo = document.getElementById('btn-no');
         const screen1 = document.getElementById('screen-1');
         const screen2 = document.getElementById('screen-2');
 
-        // --- LÓGICA DEL BOTÓN "NO" (HUIDIZO) ---
-        // Se activa al tocar (mobile) o al pasar el mouse (desktop)
+        // Función para mover el botón NO
         const moveButton = () => {
-            const screenWidth = window.innerWidth;
-            const screenHeight = window.innerHeight;
-            
-            // Calculamos una posición aleatoria segura
-            // Restamos el tamaño del botón para que no se salga de la pantalla
-            const newX = Math.random() * (screenWidth - 100);
-            const newY = Math.random() * (screenHeight - 100);
+            const w = window.innerWidth - 100;
+            const h = window.innerHeight - 100;
+            const newX = Math.random() * w;
+            const newY = Math.random() * h;
 
-            // Aplicamos posición fija para que se mueva libremente por todo el body
             btnNo.style.position = 'fixed';
-            btnNo.style.left = newX + 'px';
-            btnNo.style.top = newY + 'px';
+            btnNo.style.left = Math.max(20, newX) + 'px';
+            btnNo.style.top = Math.max(20, newY) + 'px';
         };
 
-        btnNo.addEventListener('touchstart', (e) => {
-            e.preventDefault(); // Evita el click real
-            moveButton();
-        });
-        
+        btnNo.addEventListener('touchstart', (e) => { e.preventDefault(); moveButton(); });
         btnNo.addEventListener('mouseover', moveButton);
-        btnNo.addEventListener('click', moveButton); // Por si acaso logran clickear
+        btnNo.addEventListener('click', moveButton);
 
-        // --- LÓGICA DEL BOTÓN "SÍ" ---
+        // Función al decir SÍ
         btnYes.addEventListener('click', () => {
-            // 1. Transición de pantallas
             screen1.style.opacity = '0';
-            screen1.style.transform = 'scale(0.9)';
-            
             setTimeout(() => {
                 screen1.classList.add('hidden');
                 screen2.classList.remove('hidden');
-                // Forzar reflow para animación
-                void screen2.offsetWidth; 
+                // Reflow
+                void screen2.offsetWidth;
                 screen2.style.opacity = '1';
-                screen2.style.transform = 'scale(1)';
-                
-                // 2. Lanzar confeti/corazones
                 celebrate();
             }, 500);
         });
 
-        // --- SISTEMA DE CONFETI (EMOJIS) ---
+        // Lluvia de amor
         function celebrate() {
-            const emojis = ['❤️', '✨', '💙', '🎉', '💫'];
-            const container = document.body;
-
-            // Crear 50 elementos cayendo
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-                confetti.classList.add('confetti');
-                
-                // Posición aleatoria horizontal
-                confetti.style.left = Math.random() * 100 + 'vw';
-                
-                // Duración de caída aleatoria (entre 2s y 5s)
-                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                
-                // Retraso aleatorio
-                confetti.style.animationDelay = Math.random() * 2 + 's';
-                
-                // Tamaño aleatorio
-                confetti.style.fontSize = (Math.random() * 1 + 1) + 'rem';
-
-                container.appendChild(confetti);
-
-                // Limpiar el DOM después de que caigan
-                setTimeout(() => {
-                    confetti.remove();
-                }, 6000);
+            const emojis = ['❤️', '🇻🇪', '🇵🇾', '🇪🇸', '💙', '✨'];
+            for (let i = 0; i < 40; i++) {
+                const el = document.createElement('div');
+                el.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                el.classList.add('confetti');
+                el.style.left = Math.random() * 100 + 'vw';
+                el.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                el.style.fontSize = (Math.random() * 1 + 1) + 'rem';
+                document.body.appendChild(el);
+                setTimeout(() => el.remove(), 5000);
             }
         }
     </script>
